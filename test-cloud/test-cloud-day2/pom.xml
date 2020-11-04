@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.kie.cloud</groupId>
+    <artifactId>test-cloud</artifactId>
+    <version>7.41.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>test-cloud-day2</artifactId>
+
+  <name>KIE :: Cloud :: Tests :: Day2 Tests</name>
+  <description>Additional test suite.</description>
+
+  <properties>
+    <skipTests>true</skipTests>
+    <kjars.build.settings.xml>${project.build.testOutputDirectory}/settings.xml</kjars.build.settings.xml>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-cloud-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-openshift</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-git</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>test-cloud-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-cloud-common</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-maven</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.server</groupId>
+      <artifactId>kie-server-integ-tests-common</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.server</groupId>
+      <artifactId>kie-server-router-proxy</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- XTF dependencies -->
+    <dependency>
+      <groupId>cz.xtf</groupId>
+      <artifactId>http-client</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>openshift</id>
+      <properties>
+        <skipTests>false</skipTests>
+      </properties>
+    </profile>
+    <profile>
+      <id>openshift-operator</id>
+      <properties>
+        <skipTests>false</skipTests>
+      </properties>
+    </profile>
+  </profiles>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- XTF use tmp folder as temp folder, need to be deleted too when rerunning tests. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <configuration>
+            <filesets>
+              <fileset>
+                <directory>${project.basedir}/tmp</directory>
+              </fileset>
+            </filesets>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>generate-test-resources</phase>
+              <goals>
+                <goal>testResources</goal>
+              </goals>
+              <configuration>
+                <resources>
+                  <resource>
+                    <directory>src/test/filtered-resources</directory>
+                    <filtering>true</filtering>
+                  </resource>
+                  <testResource>
+                    <directory>src/test/resources</directory>
+                    <filtering>false</filtering>
+                  </testResource>
+                </resources>
+                <escapeString>\</escapeString>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <configuration>
+            <trimStackTrace>false</trimStackTrace>
+            <systemProperties>
+              <kjars.build.settings.xml>${kjars.build.settings.xml}</kjars.build.settings.xml>
+              <instance.logs>${project.build.directory}/instances</instance.logs>
+              <kie.operator.console.check.skip>true</kie.operator.console.check.skip>
+            </systemProperties>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

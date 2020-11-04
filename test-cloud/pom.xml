@@ -106,6 +106,7 @@
     <module>test-cloud-performance</module>
     <module>test-cloud-ha-cep</module>
     <module>test-cloud-springboot</module>
+    <module>test-cloud-day2</module>
   </modules>
 
   <build>
