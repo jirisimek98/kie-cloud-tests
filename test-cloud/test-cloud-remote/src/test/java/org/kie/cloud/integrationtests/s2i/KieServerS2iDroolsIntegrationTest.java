@@ -40,7 +40,7 @@ import org.kie.cloud.api.DeploymentScenarioBuilderFactoryLoader;
 import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.KieServerClientProvider;
-import org.kie.cloud.git.GitUtils;
+import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.cloud.integrationtests.category.Baseline;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
 import org.kie.cloud.integrationtests.category.Smoke;

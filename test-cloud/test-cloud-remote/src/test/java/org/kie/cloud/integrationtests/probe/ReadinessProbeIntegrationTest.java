@@ -48,7 +48,7 @@ import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.KieServerClientProvider;
 import org.kie.cloud.common.provider.KieServerControllerClientProvider;
 import org.kie.cloud.common.provider.WorkbenchClientProvider;
-import org.kie.cloud.git.GitUtils;
+import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.cloud.integrationtests.category.Baseline;
 import org.kie.cloud.integrationtests.category.OperatorNotSupported;
 import org.kie.cloud.tests.common.AbstractMethodIsolatedCloudIntegrationTest;

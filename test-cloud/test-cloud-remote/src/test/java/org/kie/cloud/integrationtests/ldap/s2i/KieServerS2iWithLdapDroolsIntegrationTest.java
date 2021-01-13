@@ -15,6 +15,8 @@
  */
 package org.kie.cloud.integrationtests.ldap.s2i;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -41,12 +43,12 @@ import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.api.settings.LdapSettings;
 import org.kie.cloud.common.provider.KieServerClientProvider;
-import org.kie.cloud.git.GitUtils;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
 import org.kie.cloud.maven.MavenDeployer;
 import org.kie.cloud.tests.common.AbstractMethodIsolatedCloudIntegrationTest;
 import org.kie.cloud.tests.common.client.util.Kjar;
 import org.kie.cloud.tests.common.client.util.LdapSettingsConstants;
+import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.server.api.model.KieContainerResource;
 import org.kie.server.api.model.ReleaseId;
 import org.kie.server.api.model.ServiceResponse;
@@ -55,8 +57,7 @@ import org.kie.server.client.RuleServicesClient;
 import org.kie.server.integrationtests.shared.KieServerReflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
 @Category({MonitoringK8sFs.class})

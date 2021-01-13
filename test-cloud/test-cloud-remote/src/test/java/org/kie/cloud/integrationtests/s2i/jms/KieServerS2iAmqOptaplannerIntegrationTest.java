@@ -40,7 +40,7 @@ import org.kie.cloud.api.deployment.AmqDeployment;
 import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.KieServerClientProvider;
-import org.kie.cloud.git.GitUtils;
+import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
 import org.kie.cloud.integrationtests.s2i.KieServerS2iOptaplannerIntegrationTest;
 import org.kie.cloud.maven.MavenDeployer;

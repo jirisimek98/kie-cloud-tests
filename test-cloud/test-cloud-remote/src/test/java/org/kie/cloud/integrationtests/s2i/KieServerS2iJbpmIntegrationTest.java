@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.kie.cloud.api.scenario.WorkbenchRuntimeSmartRouterImmutableKieServerWithDatabaseScenario;
 import org.kie.cloud.api.settings.GitSettings;
-import org.kie.cloud.git.GitUtils;
+import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.cloud.integrationtests.category.JBPMOnly;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
 import org.kie.cloud.integrationtests.category.OperatorNotSupported;
