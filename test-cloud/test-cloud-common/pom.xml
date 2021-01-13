@@ -87,6 +87,15 @@
       <groupId>org.kie.cloud</groupId>
       <artifactId>framework-cloud-common</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-git</artifactId>
+    </dependency>
+      <dependency>
+      <groupId>org.kie.cloud</groupId>
+      <artifactId>framework-openshift</artifactId>
+    </dependency>
+
     <!-- UberFire rest client -->
     <dependency>
       <groupId>org.uberfire</groupId>

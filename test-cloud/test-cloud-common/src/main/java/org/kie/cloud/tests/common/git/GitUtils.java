@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kie.cloud.git;
+package org.kie.cloud.tests.common.git;
 
 import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.slf4j.Logger;

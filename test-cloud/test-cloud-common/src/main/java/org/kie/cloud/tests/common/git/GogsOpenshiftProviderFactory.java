@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kie.cloud.git;
+package org.kie.cloud.tests.common.git;
 
 import java.net.MalformedURLException;
 import java.net.URL;
