@@ -15,22 +15,24 @@
  */
 package org.kie.cloud.day2;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.kie.cloud.api.deployment.WorkbenchDeployment;
 import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.kie.cloud.api.scenario.WorkbenchKieServerScenario;
+import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.WorkbenchClientProvider;
 import org.kie.cloud.day2.category.Day2;
 import org.kie.cloud.tests.common.AbstractCloudIntegrationTest;
+import org.kie.cloud.tests.common.client.util.Kjar;
 import org.kie.wb.test.rest.client.WorkbenchClient;
 
 @Category({Day2.class})
-public class ExternalGitWorkbenchScenarionTest extends AbstractCloudIntegrationTest {
+public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTest {
 
 
-    public String testScenarioName;
+    private static final String REPOSITORY_NAME = generateNameWithPrefix(ExternalGitWorkbenchScenarioTest.class.getSimpleName());    
 
     public KieDeploymentScenario<?> workbenchKieServerScenario;
 
@@ -38,29 +40,39 @@ public class ExternalGitWorkbenchScenarionTest extends AbstractCloudIntegrationT
 
     private WorkbenchDeployment workbenchDeployment;
 
-    private static final String GIT_HOOKS_REMOTE_DIR = "/opt/kie/data/git/hooks";
+    private GitSettings gitSettings = GitSettings.fromProperties()
+            .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchScenarioTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + Kjar.HELLO_RULES.getArtifactName()).getFile());
+
+    private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
     WorkbenchKieServerScenario workbenchKieServerPersistentScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
-                .withGitHooksDir(GIT_HOOKS_REMOTE_DIR)
+                .withGitHooksDir(GIT_HOOKS_DIR)
+                .withGitSettings(gitSettings)
                 .build();
 
     
 
 
 
-    @Before
+    @BeforeClass
     public void setUp() {
         workbenchDeployment = workbenchKieServerPersistentScenario.getWorkbenchDeployment();
         workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
     }
 
+    /*@AfterClass
+    public static void cleanEnvironment() {
+        ScenarioDeployer.undeployScenario();
+    }
+    */
+
     @Test
-    public void test() {
+    public void sampleTest() {
         
         String projectName = "testProject";
         workbenchClient.createSpace("Test space", workbenchDeployment.getUsername());
         workbenchClient.createProject("Test space", projectName, PROJECT_GROUP_ID, "1.0");
-        
+        assert(!workbenchClient.getProjects(projectName).isEmpty());
 
     }
 
