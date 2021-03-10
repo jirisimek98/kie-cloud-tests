@@ -15,6 +15,10 @@
  */
 package org.kie.cloud.day2;
 
+import java.util.Collection;
+
+import org.guvnor.rest.client.ProjectResponse;
+import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -45,19 +49,20 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
-    WorkbenchKieServerScenario workbenchKieServerPersistentScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
-                .withGitHooksDir(GIT_HOOKS_DIR)
-                .withGitSettings(gitSettings)
-                .build();
-
-    
-
-
 
     @BeforeClass
     public void setUp() {
-        workbenchDeployment = workbenchKieServerPersistentScenario.getWorkbenchDeployment();
-        workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
+        try{
+            WorkbenchKieServerScenario workbenchKieServerPersistentScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
+                .withGitHooksDir(GIT_HOOKS_DIR)
+                .withGitSettings(gitSettings)
+                .build();
+            workbenchDeployment = workbenchKieServerPersistentScenario.getWorkbenchDeployment();
+            workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
+        }
+        catch(UnsupportedOperationException ex){
+            Assume.assumeFalse(ex.getMessage().startsWith("Not supported"));
+        }
     }
 
     /*@AfterClass
@@ -72,7 +77,9 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
         String projectName = "testProject";
         workbenchClient.createSpace("Test space", workbenchDeployment.getUsername());
         workbenchClient.createProject("Test space", projectName, PROJECT_GROUP_ID, "1.0");
-        assert(!workbenchClient.getProjects(projectName).isEmpty());
+
+        Collection<ProjectResponse> projects = workbenchClient.getProjects(projectName);
+        assert(!projects.isEmpty());
 
     }
 
