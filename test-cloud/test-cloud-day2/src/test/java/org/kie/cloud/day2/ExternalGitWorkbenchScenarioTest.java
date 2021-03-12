@@ -29,6 +29,7 @@ import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.WorkbenchClientProvider;
 import org.kie.cloud.day2.category.Day2;
 import org.kie.cloud.tests.common.AbstractCloudIntegrationTest;
+import org.kie.cloud.tests.common.ScenarioDeployer;
 import org.kie.cloud.tests.common.client.util.Kjar;
 import org.kie.wb.test.rest.client.WorkbenchClient;
 
@@ -53,12 +54,13 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
     @BeforeClass
     public void setUp() {
         try{
-            WorkbenchKieServerScenario workbenchKieServerPersistentScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
+            WorkbenchKieServerScenario workbenchKieServerPersistentGitScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
                 .withGitHooksDir(GIT_HOOKS_DIR)
                 .withGitSettings(gitSettings)
                 .build();
-            workbenchDeployment = workbenchKieServerPersistentScenario.getWorkbenchDeployment();
+            workbenchDeployment = workbenchKieServerPersistentGitScenario.getWorkbenchDeployment();
             workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
+            ScenarioDeployer.deployScenario(workbenchKieServerPersistentGitScenario);
         }
         catch(UnsupportedOperationException ex){
             Assume.assumeFalse(ex.getMessage().startsWith("Not supported"));
