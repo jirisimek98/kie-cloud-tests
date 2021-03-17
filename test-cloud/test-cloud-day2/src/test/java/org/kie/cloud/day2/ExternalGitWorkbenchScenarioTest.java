@@ -15,9 +15,6 @@
  */
 package org.kie.cloud.day2;
 
-import java.util.Collection;
-
-import org.guvnor.rest.client.ProjectResponse;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -75,14 +72,14 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
     @Test
     public void sampleTest() {
-        
+        /*
         String projectName = "testProject";
         workbenchClient.createSpace("Test space", workbenchDeployment.getUsername());
         workbenchClient.createProject("Test space", projectName, PROJECT_GROUP_ID, "1.0");
 
         Collection<ProjectResponse> projects = workbenchClient.getProjects(projectName);
-        assert(projects.isEmpty());
-
+        */
+        assert(false);
     }
 
 }
