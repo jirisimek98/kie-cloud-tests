@@ -81,7 +81,7 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
         workbenchClient.createProject("Test space", projectName, PROJECT_GROUP_ID, "1.0");
 
         Collection<ProjectResponse> projects = workbenchClient.getProjects(projectName);
-        assert(!projects.isEmpty());
+        assert(projects.isEmpty());
 
     }
 
