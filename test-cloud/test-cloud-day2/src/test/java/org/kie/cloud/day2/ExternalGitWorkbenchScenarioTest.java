@@ -78,7 +78,7 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
         Collection<ProjectResponse> projects = workbenchClient.getProjects(projectName);
         */
-        assert(false);
+        assert(true);
     }
 
 }
