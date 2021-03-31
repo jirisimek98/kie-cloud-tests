@@ -20,7 +20,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.kie.cloud.api.deployment.WorkbenchDeployment;
-import org.kie.cloud.api.scenario.KieDeploymentScenario;
 import org.kie.cloud.api.scenario.WorkbenchKieServerScenario;
 import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.WorkbenchClientProvider;
@@ -36,20 +35,20 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
     private static final String REPOSITORY_NAME = generateNameWithPrefix(ExternalGitWorkbenchScenarioTest.class.getSimpleName());    
 
-    public KieDeploymentScenario<?> workbenchKieServerScenario;
+    //public KieDeploymentScenario<?> workbenchKieServerScenario;
 
-    private WorkbenchClient workbenchClient;
+    private static WorkbenchClient workbenchClient;
 
-    private WorkbenchDeployment workbenchDeployment;
+    private static WorkbenchDeployment workbenchDeployment;
 
-    private GitSettings gitSettings = GitSettings.fromProperties()
+    private static GitSettings gitSettings = GitSettings.fromProperties()
             .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchScenarioTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + Kjar.HELLO_RULES.getArtifactName()).getFile());
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
 
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
         try{
             WorkbenchKieServerScenario workbenchKieServerPersistentGitScenario = deploymentScenarioFactory.getWorkbenchKieServerPersistentScenarioBuilder()
                 .withGitHooksDir(GIT_HOOKS_DIR)
