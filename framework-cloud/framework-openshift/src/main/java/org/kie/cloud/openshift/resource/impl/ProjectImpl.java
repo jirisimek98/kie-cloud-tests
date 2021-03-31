@@ -11,11 +11,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * zz
  */
 
 package org.kie.cloud.openshift.resource.impl;
-
-import static java.util.stream.Collectors.toList;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,15 +30,6 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import org.kie.cloud.api.deployment.Instance;
-import org.kie.cloud.openshift.OpenShiftController;
-import org.kie.cloud.openshift.constants.OpenShiftConstants;
-import org.kie.cloud.openshift.resource.Project;
-import org.kie.cloud.openshift.util.OpenshiftInstanceUtil;
-import org.kie.cloud.openshift.util.ProcessExecutor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import cz.xtf.builder.builders.ImageStreamBuilder;
 import cz.xtf.builder.builders.ImageStreamBuilder.TagReferencePolicyType;
 import cz.xtf.builder.builders.SecretBuilder;
@@ -50,6 +40,16 @@ import cz.xtf.core.openshift.OpenShifts;
 import io.fabric8.kubernetes.api.model.KubernetesList;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.openshift.api.model.ImageStream;
+import org.kie.cloud.api.deployment.Instance;
+import org.kie.cloud.openshift.OpenShiftController;
+import org.kie.cloud.openshift.constants.OpenShiftConstants;
+import org.kie.cloud.openshift.resource.Project;
+import org.kie.cloud.openshift.util.OpenshiftInstanceUtil;
+import org.kie.cloud.openshift.util.ProcessExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static java.util.stream.Collectors.toList;
 
 public class ProjectImpl implements Project {
 
