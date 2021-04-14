@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.kie.cloud.api.scenario.WorkbenchRuntimeSmartRouterImmutableKieServerWithDatabaseScenario;
 import org.kie.cloud.api.settings.GitSettings;
-import org.kie.cloud.tests.common.git.GitUtils;
 import org.kie.cloud.integrationtests.category.JBPMOnly;
 import org.kie.cloud.integrationtests.category.MonitoringK8sFs;
 import org.kie.cloud.integrationtests.category.OperatorNotSupported;
@@ -32,6 +31,7 @@ import org.kie.cloud.integrationtests.testproviders.ProcessTestProvider;
 import org.kie.cloud.tests.common.AbstractCloudIntegrationTest;
 import org.kie.cloud.tests.common.ScenarioDeployer;
 import org.kie.cloud.tests.common.client.util.Kjar;
+import org.kie.cloud.tests.common.git.GitUtils;
 
 @Category({JBPMOnly.class, MonitoringK8sFs.class})
 public class KieServerS2iJbpmIntegrationTest extends AbstractCloudIntegrationTest {

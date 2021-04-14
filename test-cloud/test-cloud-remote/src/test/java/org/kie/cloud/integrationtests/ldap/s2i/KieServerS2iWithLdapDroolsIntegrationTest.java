@@ -15,8 +15,6 @@
  */
 package org.kie.cloud.integrationtests.ldap.s2i;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -57,7 +55,10 @@ import org.kie.server.client.RuleServicesClient;
 import org.kie.server.integrationtests.shared.KieServerReflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertThat;
+
 
 @RunWith(Parameterized.class)
 @Category({MonitoringK8sFs.class})
