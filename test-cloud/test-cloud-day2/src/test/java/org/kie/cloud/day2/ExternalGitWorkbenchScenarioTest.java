@@ -19,9 +19,9 @@ import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.kie.cloud.api.deployment.WorkbenchDeployment;
 import org.kie.cloud.api.DeploymentScenarioBuilderFactory;
 import org.kie.cloud.api.DeploymentScenarioBuilderFactoryLoader;
+import org.kie.cloud.api.deployment.WorkbenchDeployment;
 import org.kie.cloud.api.scenario.WorkbenchKieServerScenario;
 import org.kie.cloud.api.settings.GitSettings;
 import org.kie.cloud.common.provider.WorkbenchClientProvider;
@@ -48,7 +48,7 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
-    DeploymentScenarioBuilderFactory deploymentScenarioFactory = DeploymentScenarioBuilderFactoryLoader.getInstance();
+    private static DeploymentScenarioBuilderFactory deploymentScenarioFactory = DeploymentScenarioBuilderFactoryLoader.getInstance();
 
     @BeforeClass
     public static void setUp() {
