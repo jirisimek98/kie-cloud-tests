@@ -46,6 +46,7 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
+    DeploymentScenarioBuilderFactory deploymentScenarioFactory = DeploymentScenarioBuilderFactoryLoader.getInstance();
 
     @BeforeClass
     public static void setUp() {
