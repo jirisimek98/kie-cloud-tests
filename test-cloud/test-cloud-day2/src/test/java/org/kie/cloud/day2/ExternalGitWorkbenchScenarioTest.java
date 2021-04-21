@@ -57,9 +57,9 @@ public class ExternalGitWorkbenchScenarioTest extends AbstractCloudIntegrationTe
                 .withGitHooksDir(GIT_HOOKS_DIR)
                 .withGitSettings(gitSettings)
                 .build();
-            workbenchDeployment = workbenchKieServerPersistentGitScenario.getWorkbenchDeployments().get(0);
-            workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
             ScenarioDeployer.deployScenario(workbenchKieServerPersistentGitScenario);
+            workbenchDeployment = workbenchKieServerPersistentGitScenario.getWorkbenchDeployment();
+            workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
         }
         catch(UnsupportedOperationException ex){
             Assume.assumeFalse(ex.getMessage().startsWith("Not supported"));
