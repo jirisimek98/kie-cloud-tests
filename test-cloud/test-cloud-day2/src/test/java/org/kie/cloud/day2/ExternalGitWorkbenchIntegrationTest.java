@@ -44,7 +44,8 @@ public class ExternalGitWorkbenchIntegrationTest extends AbstractCloudIntegratio
     private static WorkbenchDeployment workbenchDeployment;
 
     private static GitSettings gitSettings = GitSettings.fromProperties()
-            .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + Kjar.HELLO_RULES.getArtifactName()).getFile());
+        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + );
+        //.withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + Kjar.HELLO_RULES.getArtifactName()).getFile());
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
