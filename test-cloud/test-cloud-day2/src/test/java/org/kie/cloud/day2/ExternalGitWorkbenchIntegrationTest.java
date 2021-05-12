@@ -28,7 +28,6 @@ import org.kie.cloud.common.provider.WorkbenchClientProvider;
 import org.kie.cloud.day2.category.Day2;
 import org.kie.cloud.tests.common.AbstractCloudIntegrationTest;
 import org.kie.cloud.tests.common.ScenarioDeployer;
-import org.kie.cloud.tests.common.client.util.Kjar;
 import org.kie.wb.test.rest.client.WorkbenchClient;
 
 @Category({Day2.class})
@@ -44,9 +43,8 @@ public class ExternalGitWorkbenchIntegrationTest extends AbstractCloudIntegratio
     private static WorkbenchDeployment workbenchDeployment;
 
     private static GitSettings gitSettings = GitSettings.fromProperties()
-        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/deployments/gogs.yaml"));
-        //.withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/" + Kjar.HELLO_RULES.getArtifactName()).getFile());
-
+        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/deployments/gogs.yaml").getFile());
+        
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
     private static DeploymentScenarioBuilderFactory deploymentScenarioFactory = DeploymentScenarioBuilderFactoryLoader.getInstance();
