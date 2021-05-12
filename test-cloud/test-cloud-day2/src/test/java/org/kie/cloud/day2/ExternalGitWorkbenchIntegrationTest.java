@@ -43,8 +43,8 @@ public class ExternalGitWorkbenchIntegrationTest extends AbstractCloudIntegratio
     private static WorkbenchDeployment workbenchDeployment;
 
     private static GitSettings gitSettings = GitSettings.fromProperties()
-        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER + "/deployments/gogs.yaml").getFile());
-        
+        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER).getFile());
+
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
     private static DeploymentScenarioBuilderFactory deploymentScenarioFactory = DeploymentScenarioBuilderFactoryLoader.getInstance();
