@@ -31,10 +31,10 @@ import org.kie.cloud.tests.common.ScenarioDeployer;
 import org.kie.wb.test.rest.client.WorkbenchClient;
 
 @Category({Day2.class})
-public class ExternalGitWorkbenchTest extends AbstractCloudIntegrationTest {
+public class ExternalGitWorkbenchIntegrationTest extends AbstractCloudIntegrationTest {
 
 
-    private static final String REPOSITORY_NAME = generateNameWithPrefix(ExternalGitWorkbenchTest.class.getSimpleName());    
+    private static final String REPOSITORY_NAME = generateNameWithPrefix(ExternalGitWorkbenchIntegrationTest.class.getSimpleName());    
 
     //public KieDeploymentScenario<?> workbenchKieServerScenario;
 
@@ -43,7 +43,7 @@ public class ExternalGitWorkbenchTest extends AbstractCloudIntegrationTest {
     private static WorkbenchDeployment workbenchDeployment;
 
     private static GitSettings gitSettings = GitSettings.fromProperties()
-        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchTest.class.getResource(PROJECT_SOURCE_FOLDER).getFile());
+        .withRepository(REPOSITORY_NAME, ExternalGitWorkbenchIntegrationTest.class.getResource(PROJECT_SOURCE_FOLDER).getFile());
 
     private static final String GIT_HOOKS_DIR = "/opt/kie/data/git/hooks";
 
