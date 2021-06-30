@@ -56,6 +56,7 @@ public class ExternalGitWorkbenchIntegrationTest extends AbstractCloudIntegratio
                 .withGitHooksDir(GIT_HOOKS_DIR)
                 .withGitSettings(gitSettings)
                 .build();
+                
             ScenarioDeployer.deployScenario(workbenchKieServerPersistentGitScenario);
             workbenchDeployment = workbenchKieServerPersistentGitScenario.getWorkbenchDeployment();
             workbenchClient = WorkbenchClientProvider.getWorkbenchClient(workbenchDeployment);
